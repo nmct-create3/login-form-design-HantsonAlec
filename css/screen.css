@@ -1,13 +1,21 @@
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
-
+@font-face {
+    font-family: 'Inter-Regular';
+    font-weight: 200;
+    src: url('../fonts/Inter-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter-SemiBold';
+    font-weight: 400;
+    src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
+}
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
 :root {
-
 }
 
 /* CSS variables here */
@@ -25,12 +33,12 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: 'Inter-Regular', arial, sans-serif;
+    color: #20223a;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: #f5f6fa;
 }
 
 *,
@@ -53,7 +61,7 @@ html {
 }
 
 ::selection {
-    background: HotPink;
+    background: #3385ff;
     color: white;
     text-shadow: none;
 }
@@ -158,20 +166,23 @@ hr {
 }
 
 a {
-    color: HotPink;
-    transition: all .1s ease-in-out;
+    color: #3385ff;
+    transition: all 0.1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: #2c049b;
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: #6aa5ff;
 }
-
+input,
+label {
+    display: block;
+}
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
@@ -431,18 +442,61 @@ a:focus {
     ---
     Website main logo
 */
-
+.c-logo {
+    height: 24px;
+    display: flex;
+    justify-content: center;
+}
+.c-logo__symbol {
+    height: 100%;
+    display: block;
+}
+/* .c-logo__path {
+} */
+.c-logo__path--1 {
+    fill: #20223a;
+}
+.c-logo__path--2 {
+    fill: #3385ff;
+}
+.c-logo__path--3 {
+    fill: #1b4186;
+}
 /*
     Component: Card
     ---
     Card with box shadow
 */
-
+.c-card {
+    background-color: #ffffff;
+    border: 1px solid #d1cfcf;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px #dbdbdb4d;
+    padding: 20px 20px;
+}
+.c-card__body {
+    padding: 10px 20px;
+}
+.c-card__footer {
+    text-align: center;
+    width: 100%;
+}
+.c-card__title {
+    text-align: center;
+    font-family: 'Inter-Regular', arial, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+}
 /*
     Component: Forms
     ---
     Everything form related here
 */
+
+.c-form-field--option {
+    display: flex;
+    align-items: center;
+}
 
 /*
     Component: Input
@@ -451,12 +505,33 @@ a:focus {
 */
 
 .c-input {
-
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border: 1px solid #d8d6d6f1;
+    border-radius: 3px;
+    font: inherit;
+    color: inherit;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 11px;
+    outline: none;
 }
 
 .c-input:focus {
+    border: 1px solid #3385ff;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d;
 }
-
+.c-input--option {
+    outline: none;
+}
+.c-input--option:focus {
+    border: 1px solid #3385ff;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d;
+}
 /*
     Component: Label
     ---
@@ -464,13 +539,18 @@ a:focus {
 */
 
 .c-label {
-
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: #606274;
 }
-
+.c-label--option {
+    margin-bottom: 0px;
+    margin-left: 8px;
+}
 /* If a input is focused within the form-field class change te color of the label */
 
 .c-form-field:focus-within .c-label {
-
 }
 
 /*
@@ -480,23 +560,33 @@ a:focus {
 */
 
 .c-button {
-
+    background-color: #2970ff;
+    color: #ffffff;
+    width: 100%;
+    padding: 15px 0px;
+    font-size: 18px;
+    line-height: 27px;
+    font-family: 'Inter-SemiBold', arial, sans-serif;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #3385ff;
 }
 
 .c-button:hover {
-
+    background-color: #4b83f5;
 }
 
 .c-button:focus {
-
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d;
 }
 
 .c-button:active {
-
+    background-color: #1b55c9;
+    color: #ffffffc5;
 }
 
 .c-button--block {
-
 }
 
 /*------------------------------------*\
@@ -510,7 +600,7 @@ a:focus {
 */
 
 .u-color-neutral-base {
-    color: Silver;
+    color: #7f7f83;
 }
 
 .u-color-neutral-dark {
@@ -576,7 +666,6 @@ a:focus {
 .u-max-width-none {
     max-width: none !important;
 }
-
 
 /*
     Utilities: align
@@ -855,18 +944,18 @@ No media query since this is the default in mobile first design
         text-decoration: underline;
     }
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: ' (' attr(href) ')';
     }
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: ' (' attr(title) ')';
     }
     /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
     */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
+    a[href^='#']:after,
+    a[href^='javascript:']:after {
+        content: '';
     }
     pre {
         white-space: pre-wrap !important;
